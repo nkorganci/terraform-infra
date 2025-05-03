@@ -11,6 +11,3 @@ module "network" {
   tags                    = var.tags
 }
 
-output "vpc_id" {
-  value = module.network.vpc_id
-}
