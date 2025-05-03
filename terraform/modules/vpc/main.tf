@@ -7,8 +7,8 @@ resource "aws_vpc" "this" {
 
 resource "aws_internet_gateway" "this" {
   vpc_id = aws_vpc.this.id
-  count  = var.create_internet_gateway ? 1 : 0
-  tags   = local.tags
+  count  =     var.create_internet_gateway     ?    1    :    0
+  tags = local.tags
 }
 
 resource "aws_subnet" "public" {
@@ -17,7 +17,20 @@ resource "aws_subnet" "public" {
   cidr_block              = each.value
   availability_zone       = each.key
   map_public_ip_on_launch = true
-  tags                    = merge(local.tags, { Name = "${var.name}-public-${each.key}" })
+  tags = merge(local.tags, {
+    Name = "${var.name}-public-${each.key}"
+  })
+}
+
+resource "aws_subnet" "private" {
+  for_each                = var.private_subnet_cidrs
+  vpc_id                  = aws_vpc.this.id
+  cidr_block              = each.value
+  availability_zone       = each.key
+  map_public_ip_on_launch = false
+  tags = merge(local.tags, {
+    Name = "${var.name}-private-${each.key}"
+  })
 }
 
 # … NAT GWs, private subnets, route tables (unchanged) …

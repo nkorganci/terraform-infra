@@ -1,0 +1,17 @@
+# Exclude local state
+*.tfstate
+*.tfstate.*
+
+# Exclude variable overrides
+*.tfvars
+*.tfvars.json
+
+# Exclude test code
+tests/
+examples/
+
+# Exclude editor or OS files
+.vscode/
+*.swp
+.terraform/
+
