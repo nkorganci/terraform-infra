@@ -2,6 +2,7 @@ module "network" {
   source = "./modules/vpc"
 
   # simply forward the root variables
+  aws_region              = var.aws_region
   name                    = var.name
   environment             = var.environment
   cidr_block              = var.cidr_block
