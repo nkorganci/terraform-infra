@@ -23,7 +23,7 @@ resource "aws_iam_role" "this" {
 resource "aws_iam_role_policy_attachment" "attachments" {
   for_each   = toset(var.attached_policy_arns)
   role       = aws_iam_role.this.name
-  policy_arn = each.value
+
 }
 
 output "role_arn" {

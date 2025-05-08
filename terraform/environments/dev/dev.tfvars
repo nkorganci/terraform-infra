@@ -2,6 +2,9 @@ name        = "ecs-trigger-dev"
 environment = "dev"
 cidr_block  = "10.0.0.0/16"
 aws_region  = "us-east-1"
+ami_id = "ami-0f88e80871fd81e91"
+bucket_prefix = "s3-bucket"
+ecr_repo_name = "ecr-repo"
 
 
 public_subnet_cidrs = {

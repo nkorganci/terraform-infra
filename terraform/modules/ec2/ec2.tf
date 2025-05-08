@@ -82,7 +82,6 @@ resource "aws_instance" "this" {
   subnet_id     = var.assign_public_ip ? var.public_subnet_id : var.private_subnet_id
   vpc_security_group_ids = [aws_security_group.ec2_sg.id]
   key_name      = var.key_name != "" ? var.key_name : null
-
   associate_public_ip_address = var.assign_public_ip
 
   tags = merge(var.tags, {
