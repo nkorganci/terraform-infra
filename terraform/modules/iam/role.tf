@@ -12,7 +12,16 @@ variable "assume_role_policy" {
 variable "attached_policy_arns" {
   description = "A list of policy ARNs to attach to the IAM role."
   type        = list(string)
-  default     = []
+  default     = [
+    # Read-only access to S3 buckets
+    "arn:aws:iam::aws:policy/AmazonS3ReadOnlyAccess",
+
+    # Full access to DynamoDB tables
+    "arn:aws:iam::aws:policy/AmazonDynamoDBFullAccess",
+
+    # Permissions to write logs in CloudWatch
+    "arn:aws:iam::aws:policy/CloudWatchLogsFullAccess",
+  ]
 }
 
 resource "aws_iam_role" "this" {
