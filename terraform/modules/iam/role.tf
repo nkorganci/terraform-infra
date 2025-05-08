@@ -3,6 +3,7 @@ variable "role_name" {
   type        = string
 }
 
+
 variable "assume_role_policy" {
   description = "The assume role policy JSON for the IAM role."
   type        = string
